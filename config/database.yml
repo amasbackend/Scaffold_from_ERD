@@ -1,0 +1,28 @@
+# MySQL. Versions 5.5.8 and up are supported.
+
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: workflow_demo
+
+test:
+  <<: *default
+  database: workflow_test
+
+staging:
+  <<: *default
+  database: workflow_test
+
+production:
+  <<: *default
+  database: workflow_production
+  username: <%= Rails.application.credentials[:pms_db_user] %>
+  password: <%= Rails.application.credentials[:pms_db_password] %>
+

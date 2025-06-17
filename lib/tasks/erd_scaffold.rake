@@ -1,6 +1,6 @@
-namespace :erd_xml_parser do
+namespace :erd_scaffold do
   desc "Parse draw.io xml file with FK, PK, enum rules"
-  task parse: :environment do
+  task generate: :environment do
       require "nokogiri"
       require "fileutils"
 
